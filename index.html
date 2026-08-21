@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeynep Selenay Ökten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #121013;
+    --bg-raised: #18161a;
+    --rule: #2b272a;
+    --rule-soft: #201d20;
+    --text: #ece6db;
+    --text-dim: #a89e8f;
+    --text-faint: #6d645a;
+    --accent: #c8623f;
+    --accent-soft: rgba(200,98,63,0.14);
+    --accent-dim: #8f4a32;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Public Sans', -apple-system, sans-serif;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:16px;
+    font-weight:300;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+  }
+
+  a{ color:inherit; }
+  ::selection{ background:var(--accent-soft); color:var(--text); }
+
+  a:focus-visible, button:focus-visible{ outline:1px solid var(--accent); outline-offset:3px; }
+
+  .wrap{ max-width:680px; margin:0 auto; padding:0 28px; }
+
+  /* ===== Masthead ===== */
+  .masthead{
+    padding:88px 0 40px;
+    text-align:center;
+  }
+  .kicker{
+    font-family:var(--sans);
+    font-size:11px;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:0 0 22px;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(38px, 7vw, 60px);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    margin:0 0 14px;
+    color:var(--text);
+  }
+  .role{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:19px;
+    color:var(--text-dim);
+    margin:0;
+  }
+  .masthead-rule{
+    margin:40px auto 0;
+    max-width:680px;
+    border:none;
+    border-top:1px solid var(--rule);
+    position:relative;
+  }
+  .masthead-rule::after{
+    content:"◆";
+    position:absolute;
+    left:50%; top:0;
+    transform:translate(-50%,-50%);
+    background:var(--bg);
+    color:var(--accent);
+    font-size:9px;
+    padding:0 14px;
+  }
+
+  nav.contents{
+    display:flex; justify-content:center; gap:34px;
+    padding:22px 0 0;
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+  }
+  nav.contents a{ text-decoration:none; transition:color .15s ease; }
+  nav.contents a:hover{ color:var(--accent); }
+
+  section{ padding:64px 0; }
+  section + section{ border-top:1px solid var(--rule); }
+
+  .eyebrow{
+    display:flex; align-items:baseline; gap:12px;
+    margin:0 0 30px;
+  }
+  .eyebrow .num{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--accent);
+    font-size:15px;
+  }
+  .eyebrow .label{
+    font-size:11px;
+    letter-spacing:0.24em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+  }
+  .eyebrow .line{
+    flex:1; height:1px; background:var(--rule);
+  }
+
+  /* ===== About ===== */
+  .lede{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:22px;
+    line-height:1.55;
+    color:var(--text);
+    margin:0 0 20px;
+  }
+  .lede::first-letter{
+    font-size:3.4em;
+    float:left;
+    line-height:0.85;
+    padding-right:10px;
+    padding-top:4px;
+    color:var(--accent);
+    font-weight:500;
+  }
+  .about p{
+    color:var(--text-dim);
+    font-size:15.5px;
+    max-width:56ch;
+  }
+
+  /* ===== Skills ===== */
+  .skill-row{
+    display:flex;
+    gap:24px;
+    padding:16px 0;
+    border-bottom:1px solid var(--rule-soft);
+  }
+  .skill-row:last-child{ border-bottom:none; }
+  .skill-label{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:15px;
+    color:var(--text-dim);
+    width:150px;
+    flex-shrink:0;
+  }
+  .skill-values{
+    color:var(--text);
+    font-size:14.5px;
+    font-weight:400;
+    line-height:1.9;
+  }
+  .skill-values span:not(:last-child)::after{
+    content:"·";
+    color:var(--text-faint);
+    margin:0 9px;
+  }
+
+  /* ===== Projects ===== */
+  .project{
+    padding:34px 0;
+    border-bottom:1px solid var(--rule-soft);
+  }
+  .project:first-child{ padding-top:0; }
+  .project:last-child{ border-bottom:none; padding-bottom:0; }
+
+  .project-top{
+    display:flex;
+    gap:20px;
+    align-items:baseline;
+    margin-bottom:10px;
+  }
+  .project-index{
+    font-family:var(--serif);
+    font-size:14px;
+    color:var(--accent-dim);
+    flex-shrink:0;
+    width:24px;
+  }
+  .project-title{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:22px;
+    color:var(--text);
+    margin:0;
+    letter-spacing:-0.005em;
+  }
+  .project-body{ padding-left:44px; }
+  .project-desc{
+    color:var(--text-dim);
+    font-size:15px;
+    max-width:58ch;
+    margin:0 0 16px;
+  }
+  .project-meta{
+    display:flex; align-items:center; flex-wrap:wrap; gap:10px 16px;
+  }
+  .stack{
+    font-size:12px;
+    letter-spacing:0.04em;
+    color:var(--text-faint);
+    font-family:var(--sans);
+  }
+  .stack em{
+    font-style:normal;
+    color:var(--text-dim);
+  }
+  .project-link{
+    font-size:13px;
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:border-color .15s ease;
+    white-space:nowrap;
+  }
+  .project-link:hover{ border-bottom-color:var(--accent); }
+
+  /* ===== Contact ===== */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px 40px;
+  }
+  @media (max-width:520px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact-item .k{
+    display:block;
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+    margin-bottom:8px;
+  }
+  .contact-item .v{
+    font-family:var(--serif);
+    font-size:18px;
+    color:var(--text);
+    text-decoration:none;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:2px;
+    transition:border-color .15s ease, color .15s ease;
+    word-break:break-word;
+  }
+  .contact-item .v:hover{ color:var(--accent); border-color:var(--accent); }
+
+  footer{
+    padding:44px 0 70px;
+    text-align:center;
+    color:var(--text-faint);
+    font-size:12px;
+    letter-spacing:0.08em;
+  }
+  footer .mark{ color:var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead" id="top">
+    <p class="kicker">Portfolyo · 2026</p>
+    <h1>Zeynep Selenay Ökten</h1>
+    <p class="role">Bilgisayar Mühendisliği Öğrencisi</p>
+    <hr class="masthead-rule">
+    <nav class="contents">
+      <a href="#about">Hakkımda</a>
+      <a href="#skills">Beceriler</a>
+      <a href="#projects">Projeler</a>
+      <a href="#contact">İletişim</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <div class="eyebrow"><span class="num">I.</span><span class="label">Hakkımda</span><span class="line"></span></div>
+    <p class="lede">Farklı problem uzaylarında çalışmayı seven bir mühendislik öğrencisiyim —
+    graf algoritmalarından sinyal işlemeye, doğal dil işlemeden fiziksel sistem simülasyonlarına.</p>
+    <div class="about">
+      <p>Bilgisayar mühendisliği eğitimimi sürdürürken algoritma tasarımı, veri odaklı modelleme
+      ve bilimsel hesaplama alanlarında pratik projeler geliştiriyorum. Yeni bir problemi anlamak
+      için önce matematiksel modelini kurmayı, sonra kodda karşılığını bulmayı seviyorum.</p>
+      <p>Projelerim arasında graf teorisi tabanlı akademik atıf ağı analizinden, RANSAC ile sensör
+      verisi işlemeye, LLM destekli metin madenciliğinden nörobilim ve parçacık fiziği
+      simülasyonlarına kadar geniş bir yelpaze bulunuyor.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="eyebrow"><span class="num">II.</span><span class="label">Beceriler</span><span class="line"></span></div>
+    <div class="skills">
+      <div class="skill-row">
+        <span class="skill-label">Diller</span>
+        <span class="skill-values"><span>Python</span><span>C / C++</span><span>Java</span></span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Veri &amp; ML</span>
+        <span class="skill-values"><span>NumPy</span><span>Matplotlib</span><span>BERTopic</span><span>CTM</span><span>Prompt Engineering</span></span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Modelleme</span>
+        <span class="skill-values"><span>Graf Teorisi</span><span>RANSAC</span><span>Diferansiyel Denklemler</span><span>Hopfield Ağları</span></span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Araçlar</span>
+        <span class="skill-values"><span>JavaFX</span><span>GNUplot</span><span>Git</span></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="eyebrow"><span class="num">III.</span><span class="label">Projeler</span><span class="line"></span></div>
+
+    <article class="project">
+      <div class="project-top">
+        <span class="project-index">01</span>
+        <h3 class="project-title">Akademik Atıf Ağı Analiz Sistemi</h3>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Akademik makalelerin atıf ağlarını interaktif olarak görselleştiren
+        JavaFX tabanlı bir graf analiz sistemi. H-Index, H-Median, K-Core ve Betweenness Centrality
+        gibi ağ metriklerini hesaplayıp özel bir çizim motoruyla görselleştiriyor; kullanıcı düğümler
+        üzerinde etkileşimli olarak ağı genişletebiliyor.</p>
+        <div class="project-meta">
+          <span class="stack"><em>Java</em> · JavaFX · Graf Teorisi · BFS</span>
+          <a class="project-link" href="https://github.com/zselenay" target="_blank" rel="noopener">GitHub'da görüntüle →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-top">
+        <span class="project-index">02</span>
+        <h3 class="project-title">LIDAR Verisi Filtreleme ve RANSAC ile Kesişim Tespiti</h3>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">LIDAR sensör verisini RANSAC algoritmasıyla işleyerek geçerli çizgi
+        segmentlerini tespit eden, gürültülü noktaları filtreleyen ve iki çizginin kesişim noktasını
+        bulan bir C programı. Kesişim noktasının robota olan mesafesini ve açısını hesaplayıp
+        sonucu GNUplot ile görselleştiriyor.</p>
+        <div class="project-meta">
+          <span class="stack"><em>C</em> · RANSAC · Sinyal İşleme · GNUplot</span>
+          <a class="project-link" href="https://github.com/zselenay" target="_blank" rel="noopener">GitHub'da görüntüle →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-top">
+        <span class="project-index">03</span>
+        <h3 class="project-title">5G Sonrası Müşteri Deneyimi Analizi</h3>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Türkiye'deki 5G dönüşümünü analiz etmek için Twitter, Şikayetvar,
+        Ekşi Sözlük, DonanımHaber ve Google Play Store'dan toplanan kullanıcı yorumları üzerinde
+        BERTopic ve CTM ile hibrit konu modelleme yapan bir NLP projesi. Kümelerin etiketlenmesi
+        DeepSeek ve Gemma LLM'leri ile prompt engineering kullanılarak otomatize edildi.</p>
+        <div class="project-meta">
+          <span class="stack"><em>Python</em> · BERTopic · CTM · LLM Entegrasyonu</span>
+          <a class="project-link" href="https://github.com/zselenay" target="_blank" rel="noopener">GitHub'da görüntüle →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-top">
+        <span class="project-index">04</span>
+        <h3 class="project-title">Biyolojik Bellek ve Stres-Bellek Etkileşim Modellemesi</h3>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Hipokampus ve amigdala arasındaki etkileşimi temel alarak stres
+        hormonu kortizolün bellek kodlama ve geri çağırma üzerindeki etkisini modelleyen bir
+        simülatör. Nöron dinamikleri Leaky Integrate-and-Fire denklemleriyle, bellek sistemi ise
+        Hebbian Learning kuralına dayalı 100 nöronlu bir Hopfield ağıyla modellendi.</p>
+        <div class="project-meta">
+          <span class="stack"><em>Python</em> · NumPy · Hopfield Ağı · OOP</span>
+          <a class="project-link" href="https://github.com/zselenay" target="_blank" rel="noopener">GitHub'da görüntüle →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-top">
+        <span class="project-index">05</span>
+        <h3 class="project-title">Atmosferik Kozmik Işın Kaskad Simülasyonu</h3>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Yüksek enerjili kozmik parçacıkların atmosfere girişini, atomlarla
+        etkileşimlerini ve oluşturdukları ikincil parçacık duşlarını (air shower) matematiksel
+        modellerle simüle eden bir proje. Enerji dağılımları ve katmanlar arası geçişler
+        Matplotlib ile görselleştirildi.</p>
+        <div class="project-meta">
+          <span class="stack"><em>Python</em> · NumPy · Matplotlib · Fiziksel Modelleme</span>
+          <a class="project-link" href="https://github.com/zselenay" target="_blank" rel="noopener">GitHub'da görüntüle →</a>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <section id="contact">
+    <div class="eyebrow"><span class="num">IV.</span><span class="label">İletişim</span><span class="line"></span></div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <span class="k">E-posta</span>
+        <a class="v" href="mailto:oktenselenay2@gmail.com">oktenselenay2@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="k">GitHub</span>
+        <a class="v" href="https://github.com/zselenay" target="_blank" rel="noopener">github.com/zselenay</a>
+      </div>
+      <div class="contact-item">
+        <span class="k">LinkedIn</span>
+        <a class="v" href="https://www.linkedin.com/in/zeynep-selenay-%C3%B6kten/" target="_blank" rel="noopener">Zeynep Selenay Ökten</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="mark">◆</span> Zeynep Selenay Ökten — 2026
+  </footer>
+
+</div>
+
+</body>
+</html>
